@@ -1,33 +1,15 @@
-package com.github.justinvinall.bedtimetracker.entity;
+package com.github.justinvinall.bedtimetracker.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "prize")
-public class Prize {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "prize_id")
+public class PrizeDTO {
     private Integer prizeId;
-
-    @Column(name = "name", nullable = false, length = 100)
     private String name;
-
-    @Column(name = "description", length = 500)
     private String description;
-
-    @Column(name = "image_url", length = 2048)
     private String imageUrl;
-
-    @Column(name = "priority")
     private Integer priority;
 
-    // Default constructor
-    public Prize() {
-    }
-
-    // Constructor with required fields
-    public Prize(String name, String description, String imageUrl, Integer priority) {
+    // Constructor
+    public PrizeDTO(Integer prizeId, String name, String description, String imageUrl, Integer priority) {
+        this.prizeId = prizeId;
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -37,6 +19,10 @@ public class Prize {
     // Getters and setters
     public Integer getPrizeId() {
         return prizeId;
+    }
+
+    public void setPrizeId(Integer prizeId) {
+        this.prizeId = prizeId;
     }
 
     public String getName() {
@@ -69,5 +55,5 @@ public class Prize {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
-    }    
+    }
 }

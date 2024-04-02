@@ -13,11 +13,25 @@ public class Child {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
     
-    // Constructor
+    // Default constructor
+    public Child() {
+    }
+
+    // Constructor with required fields
     public Child(String name) {
         this.name = name;
     }
 
-    // Getters and setters
+    //Getters and setters
+    public Integer getChildId() {
+        return childId;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -5,7 +5,7 @@ CREATE TABLE bedtime (
     child_id INT NOT NULL,
     sleep_start DATETIME NOT NULL,
     sleep_end DATETIME NOT NULL,
-    success BOOLEAN NOT NULL,
+    is_success BOOLEAN NOT NULL,
     is_nap BOOLEAN NOT NULL,
     
     PRIMARY KEY (bedtime_id),
