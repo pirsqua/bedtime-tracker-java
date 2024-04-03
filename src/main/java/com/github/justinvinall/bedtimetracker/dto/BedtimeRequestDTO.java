@@ -2,19 +2,22 @@ package com.github.justinvinall.bedtimetracker.dto;
 
 import java.time.LocalDateTime;
 
-public class BedtimeDTO {
-    private Integer bedtimeId;
-    private ChildDTO child;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class BedtimeRequestDTO {
+    private Integer childId;
     private LocalDateTime sleepStart;
     private LocalDateTime sleepEnd;
     private boolean isSuccess;
     private boolean isNap;
 
-    // Constructor
-    public BedtimeDTO(Integer bedtimeId, ChildDTO child, LocalDateTime sleepStart,
-                      LocalDateTime sleepEnd, boolean isSuccess, boolean isNap) {
-        this.bedtimeId = bedtimeId;
-        this.child = child;
+    // Constructors
+    public BedtimeRequestDTO() {
+    }
+    
+    public BedtimeRequestDTO(Integer childId, LocalDateTime sleepStart, LocalDateTime sleepEnd,
+                             boolean isSuccess, boolean isNap) {
+        this.childId = childId;
         this.sleepStart = sleepStart;
         this.sleepEnd = sleepEnd;
         this.isSuccess = isSuccess;
@@ -22,20 +25,12 @@ public class BedtimeDTO {
     }
 
     // Getters and setters
-    public Integer getBedtimeId() {
-        return bedtimeId;
+    public Integer getChildId() {
+        return childId;
     }
 
-    public void setBedtimeId(Integer bedtimeId) {
-        this.bedtimeId = bedtimeId;
-    }
-
-    public ChildDTO getChild() {
-        return child;
-    }
-
-    public void setChild(ChildDTO child) {
-        this.child = child;
+    public void setChildId(Integer childId) {
+        this.childId = childId;
     }
 
     public LocalDateTime getSleepStart() {
@@ -54,19 +49,23 @@ public class BedtimeDTO {
         this.sleepEnd = sleepEnd;
     }
 
+    // Set JSON name explicitly since Jackson would otherwise use "success" instead of "isSuccess"
+    @JsonProperty("isSuccess")
     public boolean isSuccess() {
         return isSuccess;
     }
 
-    public void setIsSuccess(boolean isSuccess) {
+    public void setSuccess(boolean isSuccess) {
         this.isSuccess = isSuccess;
     }
 
+    // Set JSON name explicitly since Jackson would otherwise use "nap" instead of "isNap"
+    @JsonProperty("isNap")
     public boolean isNap() {
         return isNap;
     }
 
-    public void setIsNap(boolean isNap) {
+    public void setNap(boolean isNap) {
         this.isNap = isNap;
     }
 }

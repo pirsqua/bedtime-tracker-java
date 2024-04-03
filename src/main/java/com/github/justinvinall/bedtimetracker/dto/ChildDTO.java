@@ -4,7 +4,10 @@ public class ChildDTO {
     private Integer childId;
     private String name;
 
-    // Constructor
+    // Constructors
+    public ChildDTO() {
+    }
+    
     public ChildDTO(Integer childId, String name) {
         this.childId = childId;
         this.name = name;

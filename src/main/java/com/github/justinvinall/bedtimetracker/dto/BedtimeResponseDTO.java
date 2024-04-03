@@ -1,39 +1,24 @@
-package com.github.justinvinall.bedtimetracker.entity;
+package com.github.justinvinall.bedtimetracker.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "bedtime")
-public class Bedtime {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bedtime_id")
+public class BedtimeResponseDTO {
     private Integer bedtimeId;
-
-    @ManyToOne
-    @JoinColumn(name = "child_id", nullable = false)
-    private Child child;
-
-    @Column(name = "sleep_start", nullable = false)
+    private ChildDTO child;
     private LocalDateTime sleepStart;
-
-    @Column(name = "sleep_end", nullable = false)
     private LocalDateTime sleepEnd;
-
-    @Column(name = "is_success", nullable = false)
     private boolean isSuccess;
-
-    @Column(name = "is_nap", nullable = false)
     private boolean isNap;
 
-    // Default constructor
-    public Bedtime() {
+    // Constructors
+    public BedtimeResponseDTO() {
     }
-
-    // Constructor with required fields
-    public Bedtime(Child child, LocalDateTime sleepStart, LocalDateTime sleepEnd, boolean isSuccess, boolean isNap) {
+    
+    public BedtimeResponseDTO(Integer bedtimeId, ChildDTO child, LocalDateTime sleepStart,
+                              LocalDateTime sleepEnd, boolean isSuccess, boolean isNap) {
+        this.bedtimeId = bedtimeId;
         this.child = child;
         this.sleepStart = sleepStart;
         this.sleepEnd = sleepEnd;
@@ -46,11 +31,15 @@ public class Bedtime {
         return bedtimeId;
     }
 
-    public Child getChild() {
+    public void setBedtimeId(Integer bedtimeId) {
+        this.bedtimeId = bedtimeId;
+    }
+
+    public ChildDTO getChild() {
         return child;
     }
 
-    public void setChild(Child child) {
+    public void setChild(ChildDTO child) {
         this.child = child;
     }
 
@@ -70,6 +59,8 @@ public class Bedtime {
         this.sleepEnd = sleepEnd;
     }
 
+    // Set JSON name explicitly since Jackson would otherwise use "success" instead of "isSuccess"
+    @JsonProperty("isSuccess")
     public boolean isSuccess() {
         return isSuccess;
     }
@@ -78,6 +69,8 @@ public class Bedtime {
         this.isSuccess = isSuccess;
     }
 
+    // Set JSON name explicitly since Jackson would otherwise use "nap" instead of "isNap"
+    @JsonProperty("isNap")
     public boolean isNap() {
         return isNap;
     }

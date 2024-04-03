@@ -7,7 +7,10 @@ public class PrizeDTO {
     private String imageUrl;
     private Integer priority;
 
-    // Constructor
+    // Constructors
+    public PrizeDTO() {
+    }
+    
     public PrizeDTO(Integer prizeId, String name, String description, String imageUrl, Integer priority) {
         this.prizeId = prizeId;
         this.name = name;

@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.github.justinvinall.bedtimetracker.dto.BedtimeDTO;
+import com.github.justinvinall.bedtimetracker.dto.BedtimeRequestDTO;
+import com.github.justinvinall.bedtimetracker.dto.BedtimeResponseDTO;
 import com.github.justinvinall.bedtimetracker.service.BedtimeService;
 
 @RestController
-@RequestMapping("/api/bedtimes")
+@RequestMapping("/api/bedtimes/")
 public class BedtimeController {
     private final BedtimeService bedtimeService;
 
@@ -18,18 +19,18 @@ public class BedtimeController {
     }
 
     @GetMapping
-    public List<BedtimeDTO> getAllBedtimes() {
+    public List<BedtimeResponseDTO> getAllBedtimes() {
         return bedtimeService.getAllBedtimes();
     }
 
     @GetMapping("/{id}")
-    public BedtimeDTO getBedtimeById(@PathVariable int id) {
+    public BedtimeResponseDTO getBedtimeById(@PathVariable int id) {
         return bedtimeService.getBedtimeById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BedtimeDTO createBedtime(@RequestBody BedtimeDTO bedtimeDTO) {
-        return bedtimeService.createBedtime(bedtimeDTO);
+    public BedtimeResponseDTO createBedtime(@RequestBody BedtimeRequestDTO bedtimeRequestDTO) {
+        return bedtimeService.createBedtime(bedtimeRequestDTO);
     }
 }

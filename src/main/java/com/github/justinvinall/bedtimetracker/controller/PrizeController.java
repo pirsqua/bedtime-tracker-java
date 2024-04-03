@@ -9,7 +9,7 @@ import com.github.justinvinall.bedtimetracker.dto.PrizeDTO;
 import com.github.justinvinall.bedtimetracker.service.PrizeService;
 
 @RestController
-@RequestMapping("/api/prizes")
+@RequestMapping("/api/prizes/")
 public class PrizeController {
     private final PrizeService prizeService;
 

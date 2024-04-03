@@ -9,7 +9,7 @@ import com.github.justinvinall.bedtimetracker.dto.ChildDTO;
 import com.github.justinvinall.bedtimetracker.service.ChildService;
 
 @RestController
-@RequestMapping("/api/children")
+@RequestMapping("/api/children/")
 public class ChildController {
     private final ChildService childService;
 
