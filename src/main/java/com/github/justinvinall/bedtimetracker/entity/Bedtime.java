@@ -23,22 +23,22 @@ public class Bedtime {
     private LocalDateTime sleepEnd;
 
     @Column(name = "is_success", nullable = false)
-    private boolean isSuccess;
+    private boolean success;
 
     @Column(name = "is_nap", nullable = false)
-    private boolean isNap;
+    private boolean nap;
 
     // Default constructor
     public Bedtime() {
     }
 
     // Constructor with required fields
-    public Bedtime(Child child, LocalDateTime sleepStart, LocalDateTime sleepEnd, boolean isSuccess, boolean isNap) {
+    public Bedtime(Child child, LocalDateTime sleepStart, LocalDateTime sleepEnd, boolean success, boolean nap) {
         this.child = child;
         this.sleepStart = sleepStart;
         this.sleepEnd = sleepEnd;
-        this.isSuccess = isSuccess;
-        this.isNap = isNap;
+        this.success = success;
+        this.nap = nap;
     }
 
     // Getters and setters
@@ -71,18 +71,18 @@ public class Bedtime {
     }
 
     public boolean isSuccess() {
-        return isSuccess;
+        return success;
     }
 
-    public void setSuccess(boolean isSuccess) {
-        this.isSuccess = isSuccess;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     public boolean isNap() {
-        return isNap;
+        return nap;
     }
 
-    public void setNap(boolean isNap) {
-        this.isNap = isNap;
+    public void setNap(boolean nap) {
+        this.nap = nap;
     }
 }

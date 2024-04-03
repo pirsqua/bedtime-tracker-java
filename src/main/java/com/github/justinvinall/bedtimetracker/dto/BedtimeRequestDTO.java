@@ -2,26 +2,24 @@ package com.github.justinvinall.bedtimetracker.dto;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class BedtimeRequestDTO {
     private Integer childId;
     private LocalDateTime sleepStart;
     private LocalDateTime sleepEnd;
-    private boolean isSuccess;
-    private boolean isNap;
+    private boolean success;
+    private boolean nap;
 
     // Constructors
     public BedtimeRequestDTO() {
     }
     
     public BedtimeRequestDTO(Integer childId, LocalDateTime sleepStart, LocalDateTime sleepEnd,
-                             boolean isSuccess, boolean isNap) {
+                             boolean success, boolean nap) {
         this.childId = childId;
         this.sleepStart = sleepStart;
         this.sleepEnd = sleepEnd;
-        this.isSuccess = isSuccess;
-        this.isNap = isNap;
+        this.success = success;
+        this.nap = nap;
     }
 
     // Getters and setters
@@ -49,23 +47,19 @@ public class BedtimeRequestDTO {
         this.sleepEnd = sleepEnd;
     }
 
-    // Set JSON name explicitly since Jackson would otherwise use "success" instead of "isSuccess"
-    @JsonProperty("isSuccess")
     public boolean isSuccess() {
-        return isSuccess;
+        return success;
     }
 
-    public void setSuccess(boolean isSuccess) {
-        this.isSuccess = isSuccess;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    // Set JSON name explicitly since Jackson would otherwise use "nap" instead of "isNap"
-    @JsonProperty("isNap")
     public boolean isNap() {
-        return isNap;
+        return nap;
     }
 
-    public void setNap(boolean isNap) {
-        this.isNap = isNap;
+    public void setNap(boolean nap) {
+        this.nap = nap;
     }
 }
