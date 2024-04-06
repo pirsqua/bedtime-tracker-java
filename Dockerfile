@@ -1,4 +1,4 @@
-# Use the official Maven image with Java 17 and slim distro for the build stage
+# Use the official Maven image with JDK 21
 FROM maven:3.9.6-amazoncorretto-21 AS build
 
 # Set the working directory in the container
@@ -16,7 +16,7 @@ COPY src ./src
 # Build a release artifact
 RUN mvn clean package
 
-# Use OpenJDK JDK 17 slim for the runtime stage of the Docker build
+# Use JDK 21 for the runtime stage of the Docker build
 FROM amazoncorretto:21
 
 # Set the working directory in the container
